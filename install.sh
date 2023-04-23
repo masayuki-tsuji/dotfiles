@@ -59,10 +59,10 @@ fi
 installWithHomebrew() {
   local tool=$1
   local callbackArgs=$2
-  brew list | grep -q $tool 2>&1 1>/dev/null
+  brew list $tool 2>&1 1>/dev/null
   if [ $? -ne 0 ]; then
     brew install $tool
-    if [ -n $callbackArgs ]; then
+    if [ -n "$callbackArgs" ]; then
       echo 'export PATH="'"$callbackArgs"':$PATH"' >> ~/.zshrc
     fi
     echo "Info: Install $tool completed."
@@ -71,9 +71,56 @@ installWithHomebrew() {
   fi
 }
 
+installWithHomebrewWithCaskOption() {
+  local tool=$1
+  local callbackArgs=$2
+  brew list $tool 2>&1 1>/dev/null
+  if [ $? -ne 0 ]; then
+    brew install --cask $tool
+    if [ -n "$callbackArgs" ]; then
+      echo 'export PATH="'"$callbackArgs"':$PATH"' >> ~/.zshrc
+    fi
+    echo "Info: Install $tool completed."
+  else
+    echo "Info: The OS already have $tool installed."
+  fi
+}
+
+# installWithHomebrew openjdk
+# export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
 installWithHomebrew pnpm
+
+installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
+installWithHomebrew mysql-client
+
 installWithHomebrew awscli
-installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin"
+installWithHomebrewWithCaskOption google-cloud-sdk
+
+# ===========================================================
+# Project specific libs
+# Google Cloud Platform required.
+# ===========================================================
+cloudSqlProxyName=cloud_sql_proxy
+cloudSqlProxyVersion=v1.33.6
+hash $cloudSqlProxyName 2>&1 1>/dev/null
+if [ $? -ne 0 ]; then
+  curl -o $cloudSqlProxyName https://storage.googleapis.com/cloudsql-proxy/${cloudSqlProxyVersion}/cloud_sql_proxy.darwin.arm64
+  chmod +x $cloudSqlProxyName
+  sudo mv $cloudSqlProxyName /usr/local/bin
+  echo "Info: Install $cloudSqlProxyName completed."
+else
+  echo "Info: The OS already have $cloudSqlProxyName installed."
+fi
+
+hash firebase 2>&1 1>/dev/null
+if [ $? -ne 0 ]; then
+  curl -sL https://firebase.tools | bash
+  echo "Info: Install firebase completed."
+else
+  echo "Info: The OS already have firebase installed."
+fi
+
 
 echo "Info: Install completed."
 exit 0
