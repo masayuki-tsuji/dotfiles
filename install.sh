@@ -89,13 +89,17 @@ installWithHomebrewWithCaskOption() {
 # installWithHomebrew openjdk
 # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-installWithHomebrew pnpm
+installWithHomebrew corepack
 
 installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
 installWithHomebrew mysql-client
 
 installWithHomebrew awscli
 installWithHomebrewWithCaskOption google-cloud-sdk
+
+corepack enable
+echo "Info: Enable corepack completed."
+
 
 # ===========================================================
 # Project specific libs
