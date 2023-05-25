@@ -47,7 +47,7 @@ hash volta 2>&1 1>/dev/null
 if [ $? -ne 0 ]; then
   curl https://get.volta.sh | bash -s -- --skip-setup 
   echo 'export VOLTA_HOME="$HOME/.volta"' >> ~/.zshrc
-  echo 'export PATH="$PATH:$VOLTA_HOME/bin"' >> ~/.zshrc
+  echo 'export PATH="$VOLTA_HOME/bin:$PATH"' >> ~/.zshrc
   echo "Info: Install volta completed."
 else
   echo "Info: The OS already have volta installed."
@@ -89,6 +89,7 @@ installWithHomebrewWithCaskOption() {
 # installWithHomebrew openjdk
 # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
+installWithHomebrew mkcert
 installWithHomebrew corepack
 
 installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
@@ -99,7 +100,6 @@ installWithHomebrewWithCaskOption google-cloud-sdk
 
 corepack enable
 echo "Info: Enable corepack completed."
-
 
 # ===========================================================
 # Project specific libs
