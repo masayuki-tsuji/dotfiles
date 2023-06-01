@@ -95,16 +95,40 @@ installWithHomebrew corepack
 installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
 installWithHomebrew mysql-client
 
-installWithHomebrew awscli
-installWithHomebrewWithCaskOption google-cloud-sdk
-
 corepack enable
 echo "Info: Enable corepack completed."
 
 # ===========================================================
 # Project specific libs
+# Powerpoint required.
+# ===========================================================
+installWithHomebrew poppler
+
+# ===========================================================
+# Project specific libs
+# AWS required.
+# ===========================================================
+installWithHomebrew awscli
+
+
+hash session-manager-plugin 2>&1 1>/dev/null
+if [ $? -ne 0 ]; then
+  # https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-macos
+  curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac_arm64/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+  unzip sessionmanager-bundle.zip
+  sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+  rm -f install.sh
+  echo "Info: Install session-manager-plugin completed."
+else
+  echo "Info: The OS already have session-manager-plugin installed."
+fi
+
+# ===========================================================
+# Project specific libs
 # Google Cloud Platform required.
 # ===========================================================
+installWithHomebrewWithCaskOption google-cloud-sdk
+
 cloudSqlProxyName=cloud_sql_proxy
 cloudSqlProxyVersion=v1.33.6
 hash $cloudSqlProxyName 2>&1 1>/dev/null
