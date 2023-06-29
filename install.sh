@@ -95,6 +95,9 @@ installWithHomebrew corepack
 installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
 installWithHomebrew mysql-client
 
+installWithHomebrew gh
+installWithHomebrew act
+
 corepack enable
 echo "Info: Enable corepack completed."
 
