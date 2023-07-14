@@ -103,6 +103,23 @@ echo "Info: Enable corepack completed."
 
 # ===========================================================
 # Project specific libs
+# CDK required.
+# ===========================================================
+hash terraform 2>&1 1>/dev/null
+if [ $? -ne 0 ]; then
+  # https://developer.hashicorp.com/terraform/downloads
+  curl "https://releases.hashicorp.com/terraform/1.2.9/terraform_1.2.9_darwin_arm64.zip" -o "terraform.zip"
+  unzip terraform.zip
+  chmod +x terraform
+  sudo mv terraform /usr/local/bin
+  rm -f terraform.zip
+  echo "Info: Install terraform cli completed."
+else
+  echo "Info: The OS already have terraform cli installed."
+fi
+
+# ===========================================================
+# Project specific libs
 # Powerpoint required.
 # ===========================================================
 installWithHomebrew poppler
@@ -120,7 +137,7 @@ if [ $? -ne 0 ]; then
   curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac_arm64/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
   unzip sessionmanager-bundle.zip
   sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
-  rm -f install.sh
+  rm -f install.sh sessionmanager-bundle.zip
   echo "Info: Install session-manager-plugin completed."
 else
   echo "Info: The OS already have session-manager-plugin installed."
