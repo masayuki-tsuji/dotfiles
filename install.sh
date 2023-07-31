@@ -105,10 +105,12 @@ echo "Info: Enable corepack completed."
 # Project specific libs
 # CDK required.
 # ===========================================================
+macArch="darwin_arm64" # NOTES: `uname` and `uname -m`
+terraformVersion="1.5.3"
 hash terraform 2>&1 1>/dev/null
 if [ $? -ne 0 ]; then
   # https://developer.hashicorp.com/terraform/downloads
-  curl "https://releases.hashicorp.com/terraform/1.2.9/terraform_1.2.9_darwin_arm64.zip" -o "terraform.zip"
+  curl https://releases.hashicorp.com/terraform/${terraformVersion}/terraform_${terraformVersion}_${macArch}.zip -o "terraform.zip"
   unzip terraform.zip
   chmod +x terraform
   sudo mv terraform /usr/local/bin
