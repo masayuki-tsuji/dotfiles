@@ -38,7 +38,8 @@ fi
 sed -i "" -r 's/^ZSH_THEME=.*/ZSH_THEME="ys"/g' ~/.zshrc
 
 # Set oh-my-zsh plugins.
-sed -i "" -r 's/^plugins=.*/plugins=(git docker-compose)/g' ~/.zshrc
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+sed -i "" -r 's/^plugins=.*/plugins=(git docker-compose gh)/g' ~/.zshrc
 
 # ===========================================================
 # volta
