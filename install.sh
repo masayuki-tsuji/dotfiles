@@ -99,6 +99,7 @@ installWithHomebrew mysql-client
 installWithHomebrew gh
 installWithHomebrew act
 installWithHomebrew jq
+installWithHomebrew tree
 
 corepack enable
 echo "Info: Enable corepack completed."
