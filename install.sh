@@ -77,7 +77,12 @@ installWithHomebrewWithCaskOption() {
 # installWithHomebrew openjdk
 # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-installWithHomebrew fnm
+hash fnm 2>&1 1>/dev/null
+if [ $? -ne 0 ]; then
+  installWithHomebrew fnm
+  echo 'eval "$(fnm env --use-on-cd)"' >> ~/.zshrc
+fi
+
 installWithHomebrew mkcert
 installWithHomebrew corepack
 
