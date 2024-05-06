@@ -83,6 +83,8 @@ if [ $? -ne 0 ]; then
   echo 'eval "$(fnm env --use-on-cd)"' >> ~/.zshrc
 fi
 
+# Coreutils packages for Linux compatibility.
+installWithHomebrew coreutils
 installWithHomebrew mkcert
 installWithHomebrew corepack
 
@@ -96,6 +98,9 @@ installWithHomebrew tree
 
 corepack enable
 echo "Info: Enable corepack completed."
+
+## pnpm setup // it is a command.
+## echo "Info: Setup pnpm."
 
 # ===========================================================
 # Project specific libs
