@@ -96,6 +96,8 @@ installWithHomebrew act
 installWithHomebrew jq
 installWithHomebrew tree
 
+installWithHomebrew oven-sh/bun/bun
+
 corepack enable
 echo "Info: Enable corepack completed."
 
