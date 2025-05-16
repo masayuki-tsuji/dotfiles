@@ -174,6 +174,12 @@ else
   echo "Info: The OS already have firebase installed."
 fi
 
+# ===========================================================
+# Project specific libs
+# Python required.
+# ===========================================================
+curl -LsSf https://astral.sh/uv/install.sh | sh # python version manager (pyenv + venv = uv)
+
 
 echo "Info: Install completed."
 exit 0
