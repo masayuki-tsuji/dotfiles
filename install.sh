@@ -98,6 +98,8 @@ installWithHomebrew tree
 
 installWithHomebrew oven-sh/bun/bun
 
+installWithHomebrew pulumi/tap/pulumi
+
 corepack enable
 echo "Info: Enable corepack completed."
 
