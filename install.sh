@@ -96,9 +96,9 @@ installWithHomebrew act
 installWithHomebrew jq
 installWithHomebrew tree
 
-installWithHomebrew oven-sh/bun/bun
-
-installWithHomebrew pulumi/tap/pulumi
+installWithHomebrew codex
+installWithHomebrew cloudflared
+installWithHomebrew pulumi
 
 corepack enable
 echo "Info: Enable corepack completed."
