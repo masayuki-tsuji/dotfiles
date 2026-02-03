@@ -100,6 +100,11 @@ installWithHomebrew codex
 installWithHomebrew cloudflared
 installWithHomebrew pulumi
 
+# For external projects.
+installWithHomebrew zstd
+installWithHomebrew rbenv
+installWithHomebrew certbot
+
 corepack enable
 echo "Info: Enable corepack completed."
 
