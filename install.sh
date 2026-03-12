@@ -96,6 +96,9 @@ installWithHomebrew act
 installWithHomebrew jq
 installWithHomebrew tree
 
+installWithHomebrew direnv
+grep -q 'direnv hook zsh' ~/.zshrc || echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+
 installWithHomebrew codex
 installWithHomebrew cloudflared
 installWithHomebrew pulumi
@@ -104,6 +107,7 @@ installWithHomebrew pulumi
 installWithHomebrew zstd
 installWithHomebrew rbenv
 installWithHomebrew certbot
+
 
 corepack enable
 echo "Info: Enable corepack completed."
