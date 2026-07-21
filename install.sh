@@ -95,6 +95,7 @@ installWithHomebrew gh
 installWithHomebrew act
 installWithHomebrew jq
 installWithHomebrew tree
+installWithHomebrew rclone
 
 installWithHomebrew direnv
 grep -q 'direnv hook zsh' ~/.zshrc || echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
