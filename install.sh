@@ -89,7 +89,10 @@ installWithHomebrew mkcert
 installWithHomebrew corepack
 
 installWithHomebrew libpq "/opt/homebrew/opt/libpq/bin" # PostgreSQL
+
+# mysql-client is keg-only, so ensure PATH is set even if already installed.
 installWithHomebrew mysql-client
+grep -q 'mysql-client/bin' ~/.zshrc || echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
 
 installWithHomebrew gh
 installWithHomebrew act
