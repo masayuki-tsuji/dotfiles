@@ -106,6 +106,7 @@ grep -q 'direnv hook zsh' ~/.zshrc || echo 'eval "$(direnv hook zsh)"' >> ~/.zsh
 installWithHomebrew codex
 installWithHomebrew cloudflared
 installWithHomebrew pulumi
+installWithHomebrew devcontainer
 
 # For external projects.
 installWithHomebrew zstd
