@@ -103,10 +103,11 @@ installWithHomebrew rclone
 installWithHomebrew direnv
 grep -q 'direnv hook zsh' ~/.zshrc || echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
 
-installWithHomebrew codex
+installWithHomebrewWithCaskOption codex
 installWithHomebrew cloudflared
 installWithHomebrew pulumi
 installWithHomebrew devcontainer
+installWithHomebrew stripe/stripe-cli/stripe
 
 # For external projects.
 installWithHomebrew zstd
