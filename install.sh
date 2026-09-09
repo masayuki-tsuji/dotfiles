@@ -100,6 +100,7 @@ installWithHomebrew jq
 installWithHomebrew tree
 installWithHomebrew rclone
 installWithHomebrew yt-dlp
+installWithHomebrew ffmpeg
 
 installWithHomebrew direnv
 grep -q 'direnv hook zsh' ~/.zshrc || echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
